@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorteio do Ganhar</title>
+</head>
+<body>
+<h1>Sorteio do Ganhar</h1>
+<button onclick="sortear()">Sortear</button>
+<h2>O ganhador do sorteio é: <span id="winner"></span></h2>
+
+<script>
+function sortear() {
+    const participants = JSON.parse(sessionStorage.getItem('participants'));
+    if(participants && participants.length > 0) {
+        const randomIndex = Math.floor(Math.random() * participants.length);
+        const winner = participants[randomIndex];
+        document.getElementById('winner').textContent = winner;
+    } else {
+        document.getElementById('winner').textContent = "Nenhum participante para sortear";
+    }
+}
+</script>
+</body>
+</html>
